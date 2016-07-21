@@ -22,7 +22,7 @@ trait AutoSerializable
     {
         return Reconstitution::reconstitute()->objectFrom(
             get_called_class(),
-            RecursiveSerializer::deserialize($data, self::deserializationCallbacks())
+            RecursiveSerializer::deserialize($data, static::deserializationCallbacks())
         );
     }
 
