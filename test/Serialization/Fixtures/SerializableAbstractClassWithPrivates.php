@@ -1,13 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace BroadwaySerialization\Test\Serialization\Fixtures;
 
-use Broadway\Serializer\SerializableInterface;
-use BroadwaySerialization\Serialization\Serializable;
+use Broadway\Serializer\Serializable;
+use BroadwaySerialization\Serialization\AutoSerializable;
 
-abstract class SerializableAbstractClassWithPrivates implements SerializableInterface
+abstract class SerializableAbstractClassWithPrivates implements Serializable
 {
-    use Serializable;
+    use AutoSerializable;
 
     private $foo;
 

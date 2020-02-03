@@ -1,13 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace BroadwaySerialization\Test\Serialization\Fixtures;
 
-use Broadway\Serializer\SerializableInterface;
-use BroadwaySerialization\Serialization\Serializable;
+use Broadway\Serializer\Serializable;
+use BroadwaySerialization\Serialization\AutoSerializable;
 
-abstract class SerializableAbstractClass implements SerializableInterface
+abstract class SerializableAbstractClass implements Serializable
 {
-    use Serializable;
+    use AutoSerializable;
 
     protected $foo;
 
@@ -19,7 +21,7 @@ abstract class SerializableAbstractClass implements SerializableInterface
     protected static function deserializationCallbacks()
     {
         return [
-            'foo' => ['BroadwaySerialization\Test\Serialization\Fixtures\TraditionalSerializableObject', 'deserialize']
+            'foo' => [TraditionalSerializableObject::class, 'deserialize']
         ];
     }
 }
